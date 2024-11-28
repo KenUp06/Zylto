@@ -11,7 +11,7 @@ const db = require('./src/config/db.js');
 app.use(cors());
 app.use(express.json());
 
-app.use('/Zylto', routes);  
+app.use(routes);  
 
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
