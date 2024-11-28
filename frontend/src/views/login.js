@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import '../views/login.css'
+import { useNavigate } from 'react-router-dom';
+import '../views/login.css';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -18,11 +20,13 @@ function Login() {
       });
 
       if (!response.ok) {
-        throw new Error('Error en la autenticación');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Error en la autenticación');
       }
 
       const data = await response.json();
-      console.log(data); // Aquí puedes manejar la respuesta (ej. redirigir al usuario)
+      localStorage.setItem('token', data.token); // Almacenar el token
+      navigate('/workarea'); // Redirigir a la interfaz de trabajo
     } catch (error) {
       setError(error.message);
     }
