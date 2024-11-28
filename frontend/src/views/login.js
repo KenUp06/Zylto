@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './login.css';
 
 function Login() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -11,12 +11,12 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/login', {
+      const response = await fetch('http://localhost:5000/zylto/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ email, password }),
       });
 
       if (!response.ok) {
@@ -26,7 +26,7 @@ function Login() {
 
       const data = await response.json();
       localStorage.setItem('token', data.token); // Almacenar el token
-      navigate('/workarea'); // Redirigir a la interfaz de trabajo
+      navigate('/workspace'); // Redirigir a la interfaz de trabajo
     } catch (error) {
       setError(error.message);
     }
@@ -37,11 +37,11 @@ function Login() {
       <h2>Iniciar sesión</h2>
       <form onSubmit={handleLogin}>
         <div>
-          <label>Usuario:</label>
+          <label>Correo Electrónico:</label>
           <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>

@@ -1,13 +1,28 @@
 const User = require('../models/user_model');
+const bcrypt = require('bcryptjs');
+const db = require('../config/db');
 
-exports.createUser = (req, res) => {
-    const newUser = req.body;
-    User.createUser(newUser, (err, result) => {
-        if (err) {
-            return res.status(500).json({ error: err.message });
-        }
-        res.status(201).json({ message: 'Usuario creado con éxito', userId: result.insertId });
-    });
+exports.createUser = async (req, res) => {
+    const { firstname, lastname, email, username, password } = req.body;
+
+    if (!firstname || !lastname || !email || !username || !password) {
+        return res.status(400).json({ message: 'Todos los campos son requeridos' });
+    }
+
+    try {
+        const hashedPassword = await bcrypt.hash(password, 10); // Hasheamos la contraseña
+
+        db.query(
+            'INSERT INTO users (firstname, lastname, email, username, pass) VALUES (?, ?, ?, ?, ?)',
+            [firstname, lastname, email, username, hashedPassword],
+            (err, result) => {
+                if (err) return res.status(500).json({ message: 'Error al registrar el usuario' });
+                res.status(201).json({ message: 'Usuario registrado con éxito', userId: result.insertId });
+            }
+        );
+    } catch (err) {
+        res.status(500).json({ message: 'Error en el servidor' });
+    }
 };
 
 exports.getAllUsers = (req, res) => {
