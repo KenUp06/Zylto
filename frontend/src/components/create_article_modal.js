@@ -1,19 +1,25 @@
 import React from 'react';
 import styles from './create_article_modal.module.css';
 
-const CreateArticleModal = ({ isOpen, onClose, onCreate }) => {
+const CreateArticleModal = ({ isOpen, onClose, onCreate, idinventory }) => {
     if (!isOpen) return null;
 
     const handleSubmit = (e) => {
         e.preventDefault();
+    
         const articleData = {
             name: e.target.name.value.trim(),
-            amount: Number(e.target.quantity.value), // Cambiar 'quantity' por 'amount'
-            price: Number(e.target.unitPrice.value), // Cambiar 'unitPrice' por 'price'
-            idinventory: 39, // ID de inventario estático o dinámico según contexto
+            amount: Number(e.target.quantity.value),
+            price: Number(e.target.unitPrice.value),
+            idinventory,
         };
+    
+        console.log("Datos del artículo:", articleData);
+    
         if (articleData.name && articleData.amount > 0 && articleData.price > 0) {
             onCreate(articleData);
+        } else {
+            console.error("Datos inválidos, revise los campos del formulario.");
         }
     };
 

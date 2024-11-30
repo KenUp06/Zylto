@@ -6,9 +6,9 @@ class Article {
         db.query(query, [article.name, article.amount, article.price, article.idinventory], callback);
     }
 
-    static getAllArticles(callback) {
-        const query = 'SELECT * FROM Articles';
-        db.query(query, callback);
+    static getArticlesByInventory(idinventory, callback) {
+        const query = 'SELECT * FROM Articles WHERE idinventory = ?';
+        db.query(query, [idinventory], callback);
     }
 
     static getArticleById(id, callback) {

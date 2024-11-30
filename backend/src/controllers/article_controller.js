@@ -1,8 +1,8 @@
-const Article = require('../models/article_model.js');
+const Article = require('../models/article_model');
 
 exports.createArticle = (req, res) => {
-    const newArticle = req.body;
-    Article.createArticle(newArticle, (err, result) => {
+    const article = req.body;
+    Article.createArticle(article, (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
@@ -10,8 +10,9 @@ exports.createArticle = (req, res) => {
     });
 };
 
-exports.getAllArticles = (req, res) => {
-    Article.getAllArticles((err, articles) => {
+exports.getArticlesByInventory = (req, res) => {
+    const { idinventory } = req.params; // Obtener el ID del inventario desde los parámetros
+    Article.getArticlesByInventory(idinventory, (err, articles) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
@@ -19,41 +20,22 @@ exports.getAllArticles = (req, res) => {
     });
 };
 
-exports.getArticleById = (req, res) => {
-    const id = req.params.id;
-    Article.getArticleById(id, (err, article) => {
-        if (err) {
-            return res.status(500).json({ error: err.message });
-        }
-        if (!article.length) {
-            return res.status(404).json({ message: 'Artículo no encontrado' });
-        }
-        res.status(200).json(article[0]);
-    });
-};
-
 exports.updateArticle = (req, res) => {
-    const id = req.params.id;
-    const updatedArticle = req.body;
-    Article.updateArticle(id, updatedArticle, (err, result) => {
+    const { id } = req.params;
+    const article = req.body;
+    Article.updateArticle(id, article, (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
-        }
-        if (result.affectedRows === 0) {
-            return res.status(404).json({ message: 'Artículo no encontrado' });
         }
         res.status(200).json({ message: 'Artículo actualizado con éxito' });
     });
 };
 
 exports.deleteArticle = (req, res) => {
-    const id = req.params.id;
+    const { id } = req.params;
     Article.deleteArticle(id, (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
-        }
-        if (result.affectedRows === 0) {
-            return res.status(404).json({ message: 'Artículo no encontrado' });
         }
         res.status(200).json({ message: 'Artículo eliminado con éxito' });
     });
