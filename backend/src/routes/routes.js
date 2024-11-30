@@ -7,6 +7,7 @@ const articleRoutes = require('./article_routes');
 const userRoutes = require('./user_routes');
 const inventoryRoutes = require('./inventory_routes');
 const usersOnInventoryRoutes = require('./usersoninventory_routes');
+const authRoutes = require('./auth_routes');
 
 // Ruta de bienvenida
 router.get('/', (req, res) => {
@@ -18,6 +19,7 @@ router.use('/articles', articleRoutes);
 router.use('/users', userRoutes);  // usará /api/users para las rutas de usuarios
 router.use('/inventories', inventoryRoutes);
 router.use('/usersoninventory', usersOnInventoryRoutes);
+router.use('/auth', authRoutes);
 
 router.get('/test-routes', (req, res) => {
     res.send('La ruta de prueba en routes.js está funcionando');

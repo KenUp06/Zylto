@@ -19,7 +19,7 @@ function Home() {
 
       <main>
         <div className="main-content">
-          <h2>Bienvenido a la Gestión de Inventarios</h2>
+          <h2>Bienvenido a Zylto - Sistema de Gestión de Inventarios</h2>
           <p>Administra tus inventarios de manera eficiente y sencilla.</p>
           <div className="buttons">
             <a href="login" className="btn">Iniciar sesión</a>

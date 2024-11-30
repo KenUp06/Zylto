@@ -1,0 +1,86 @@
+.workspace {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Asegura que los elementos se ubiquen en la parte superior */
+  position: relative; /* Permite posicionamiento absoluto de otros elementos */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.card {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.createCard {
+  position: absolute;
+  top: 20px; /* Ajusta la distancia desde el header */
+  left: 20px; /* Alinea el botón a la izquierda */
+  background-color: #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.createCard:hover {
+  background-color: #d0d0d0;
+}
+
+.createText {
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+}
+
+.title {
+  font-size: 24px;
+  color: #333;
+  margin-top: 50px; /* Ajusta la distancia para centrar el texto */
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+button {
+  background-color: #6a0dad;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #5700a8;
+}
+
+.deleteButton {
+  background-color: #ff6b6b;
+}
+
+.deleteButton:hover {
+  background-color: #e55656;
+}

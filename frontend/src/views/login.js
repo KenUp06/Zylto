@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './login.css';
+import styles from './login.module.css';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -11,7 +11,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/users/login', {
+      const response = await fetch('http://localhost:5000/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,29 +33,31 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <h2>Iniciar sesión</h2>
+    <div className={styles.container}>
+      <h2 className={styles.title}>Iniciar sesión</h2>
       <form onSubmit={handleLogin}>
-        <div>
-          <label>Correo Electrónico:</label>
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Correo Electrónico:</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            className={styles.input}
           />
         </div>
-        <div>
-          <label>Contraseña:</label>
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Contraseña:</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            className={styles.input}
           />
         </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button type="submit">Ingresar</button>
+        {error && <p className={styles.error}>{error}</p>}
+        <button type="submit" className={styles.button}>Ingresar</button>
       </form>
     </div>
   );

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';  // Importa el hook useNavigate
-import styles from './header.module.css';
+import styles from './header_inventory.module.css';
 
-const Header = () => {
+const HeaderInventory = () => {
   const navigate = useNavigate();  // Usa el hook useNavigate dentro del componente
 
   const handleLogout = () => {
@@ -14,8 +14,10 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.navbar}>
-        <span className={styles.logo}>Zilto</span>
+        <span className={styles.logo}>Zylto</span>
         <div className={styles.buttons}>
+          <button className={styles.button}>Generar reporte</button>
+          <button className={styles.button}>Gestionar usuarios</button>
           <button className={styles.button}>Perfil</button>
           <button className={styles.button} onClick={handleLogout}>Cerrar sesión</button>
         </div>
@@ -24,4 +26,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderInventory;

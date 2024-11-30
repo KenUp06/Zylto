@@ -1,0 +1,78 @@
+.main {
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .articleList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .articleCard {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .articleCard img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .articleCard span {
+    flex: 1;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .articleCard span:nth-child(1) {
+    text-align: left;
+  }
+  
+  .createArticleButton {
+    background-color: #6a0dad;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    margin: 20px auto 0;
+    display: block;
+  }
+  
+  .createArticleButton:hover {
+    background-color: #5c0f9e;
+  }
+  
+  .addNewSlot {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .addNewSlot button {
+    background-color: #6a0dad;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .addNewSlot button:hover {
+    background-color: #5c0f9e;
+  }
+  
