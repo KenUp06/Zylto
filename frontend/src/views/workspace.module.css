@@ -14,12 +14,29 @@
   position: relative; /* Permite posicionamiento absoluto de otros elementos */
 }
 
+.createCard {
+  background-color: #e0e0e0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.createCard:hover {
+  background-color: #d0d0d0;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   width: 100%;
   max-width: 1200px;
+  margin-top: 30px; /* Ajusta el espacio superior si es necesario */
 }
 
 .card {
@@ -30,19 +47,6 @@
   text-align: center;
 }
 
-.createCard {
-  position: absolute;
-  top: 20px; /* Ajusta la distancia desde el header */
-  left: 20px; /* Alinea el botón a la izquierda */
-  background-color: #e0e0e0;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-
-.createCard:hover {
-  background-color: #d0d0d0;
-}
 
 .createText {
   font-size: 18px;

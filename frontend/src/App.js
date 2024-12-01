@@ -6,6 +6,7 @@ import Home from './views/home.js';
 import Register from './views/register.js';
 import Workspace from './views/workspace.js';
 import Inventory from './views/inventory.js';
+import Profile from './views/profile.js';
 
 
 function App() {
@@ -31,6 +32,14 @@ function App() {
             </ProtectedRoute>
           } />
 
+        <Route 
+          path="/profile" // Nueva ruta para el perfil
+          element={
+            <ProtectedRoute>
+              <Profile /> {/* Página de perfil */}
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );

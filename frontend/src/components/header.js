@@ -11,12 +11,17 @@ const Header = () => {
     navigate('/login');  // Redirige a la página de login
   };
 
+  const handleProfile = () => {
+    // Redirige a la página de perfil
+    navigate('/profile');
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.navbar}>
         <span className={styles.logo}>Zilto</span>
         <div className={styles.buttons}>
-          <button className={styles.button}>Perfil</button>
+          <button className={styles.button} onClick={handleProfile}>Perfil</button>  {/* Redirige a perfil */}
           <button className={styles.button} onClick={handleLogout}>Cerrar sesión</button>
         </div>
       </div>

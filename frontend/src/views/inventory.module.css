@@ -1,78 +1,72 @@
 .main {
-    padding: 20px;
-    background-color: #f4f4f4;
-  }
-  
-  .articleList {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .articleCard {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .articleCard img {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .articleCard span {
-    flex: 1;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .articleCard span:nth-child(1) {
-    text-align: left;
-  }
-  
-  .createArticleButton {
-    background-color: #6a0dad;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: center;
-    margin: 20px auto 0;
-    display: block;
-  }
-  
-  .createArticleButton:hover {
-    background-color: #5c0f9e;
-  }
-  
-  .addNewSlot {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .addNewSlot button {
-    background-color: #6a0dad;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .addNewSlot button:hover {
-    background-color: #5c0f9e;
-  }
-  
+  padding: 20px;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tableContainer {
+  width: 100%;
+  max-width: 1000px; /* Establece un ancho máximo para la tabla */
+  overflow-x: auto; /* Permite desplazamiento horizontal si la tabla es demasiado ancha */
+}
+
+.articleTable {
+  width: 100%; /* Asegura que la tabla ocupe el 100% del contenedor */
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.articleTable th, .articleTable td {
+  padding: 20px 25px;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+.articleTable th {
+  background-color: #6a0dad;
+  color: white;
+  font-weight: bold;
+}
+
+.articleTable td {
+  background-color: white;
+  color: #333;
+}
+
+.articleTable td button {
+  margin: 0 10px;
+  background-color: #f5f5f5;
+  border: none;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.articleTable td button:hover {
+  background-color: #e0e0e0;
+}
+
+.createArticleButton {
+  background-color: #6a0dad;
+  color: white;
+  padding: 14px 40px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  transition: background-color 0.3s;
+}
+
+.createArticleButton:hover {
+  background-color: #5c0f9e;
+}

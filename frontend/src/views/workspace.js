@@ -84,48 +84,49 @@ const Workspace = () => {
 };
 
 
-  return (
-    <div className={styles.workspace}>
-      <Header />
-      <main className={styles.main}>
+return (
+  <div className={styles.workspace}>
+    <Header />
+    <main className={styles.main}>
+      <h1 className={styles.title}>¡Bienvenido de vuelta!</h1>
+      <div className={styles.grid}>
+        {/* Botón de Crear Inventario como un item más en la grilla */}
         <div
           className={`${styles.card} ${styles.createCard}`}
           onClick={() => setIsModalOpen(true)}
         >
           <h2 className={styles.createText}>+ Crear Inventario</h2>
         </div>
-        <h1 className={styles.title}>¡Bienvenido de vuelta!</h1>
-        <div className={styles.grid}>
-          {inventories.length === 0 ? ( // Verifica si hay inventarios
-            <p>No hay inventarios disponibles</p>
-          ) : (
-            inventories.map((inventory) => (
-              <div key={inventory.idinventory} className={styles.card}>
-                <h2 className={styles.title}>{inventory.name}</h2>
-                <div className={styles.buttons}>
-                  <button onClick={() => handleManage(inventory.idinventory)}>Gestionar</button>
-                  <button
-                    onClick={() => handleDelete(inventory.idinventory)}
-                    className={styles.deleteButton}
-                  >
-                    Eliminar
-                  </button>
-                </div>
+        {inventories.length === 0 ? (
+          <p>No hay inventarios disponibles</p>
+        ) : (
+          inventories.map((inventory) => (
+            <div key={inventory.idinventory} className={styles.card}>
+              <h2 className={styles.title}>{inventory.name}</h2>
+              <div className={styles.buttons}>
+                <button onClick={() => handleManage(inventory.idinventory)}>Gestionar</button>
+                <button
+                  onClick={() => handleDelete(inventory.idinventory)}
+                  className={styles.deleteButton}
+                >
+                  Eliminar
+                </button>
               </div>
-            ))
-          )}
-        </div>
-      </main>
-      <Footer />
-      {isModalOpen && (
-        <CreateInventoryModal
-          isOpen={isModalOpen}  // Asegúrate de pasar isOpen aquí
-          onClose={() => setIsModalOpen(false)}
-          onCreate={handleCreateInventory}
-        />
-      )}
-    </div>
-  );
+            </div>
+          ))
+        )}
+      </div>
+    </main>
+    <Footer />
+    {isModalOpen && (
+      <CreateInventoryModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onCreate={handleCreateInventory}
+      />
+    )}
+  </div>
+);
 };
 
 export default Workspace;

@@ -1,0 +1,55 @@
+.profile {
+    padding: 20px;
+  }
+  
+  .profileContainer {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .profileData div {
+    margin-bottom: 15px;
+  }
+  
+  .profileData label {
+    font-weight: bold;
+  }
+  
+  .profileData input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .saveButton,
+  .cancelButton,
+  .editButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .saveButton {
+    background-color: green;
+    color: white;
+  }
+  
+  .cancelButton {
+    background-color: red;
+    color: white;
+  }
+  
+  .editButton {
+    background-color: blue;
+    color: white;
+  }
+  

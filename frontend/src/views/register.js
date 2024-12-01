@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './register.css'; // Estilos específicos del formulario
+import styles from './register.module.css'; // Importamos los estilos con CSS Modules
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -39,60 +39,64 @@ const Register = () => {
   };
 
   return (
-    <div className="container">
-      <h2>Registro</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="nombre">Nombre:</label>
+    <div className={styles.container}>
+      <h2 className={styles.title}>Registro</h2>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <label htmlFor="nombre" className={styles.label}>Nombre:</label>
         <input
           type="text"
           id="nombre"
           name="firstname"
           value={formData.firstname}
           onChange={handleChange}
+          className={styles.input}
           required
         />
 
-        <label htmlFor="apellido">Apellido:</label>
+        <label htmlFor="apellido" className={styles.label}>Apellido:</label>
         <input
           type="text"
           id="apellido"
           name="lastname"
           value={formData.lastname}
           onChange={handleChange}
+          className={styles.input}
           required
         />
 
-        <label htmlFor="apodo">Apodo:</label>
+        <label htmlFor="apodo" className={styles.label}>Apodo:</label>
         <input
           type="text"
-          id="apodo"
-          name="username"
+          id="apodo" name="username"
           value={formData.username}
           onChange={handleChange}
+          className={styles.input}
           required
         />
 
-        <label htmlFor="email">Correo Electrónico:</label>
+        <label htmlFor="email" className={styles.label}>Correo Electrónico:</label>
         <input
           type="email"
           id="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
+          className={styles.input}
           required
         />
 
-        <label htmlFor="password">Contraseña:</label>
+        <label htmlFor="password" className={styles.label}>Contraseña:</label>
         <input
           type="password"
           id="password"
           name="password"
           value={formData.password}
           onChange={handleChange}
+          className={styles.input}
           required
         />
 
-        <button type="submit">Registrarse</button>
+        <button type="submit" className={styles.submitBtn}>Registrarse</button>
       </form>
     </div>
   );

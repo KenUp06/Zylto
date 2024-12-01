@@ -11,11 +11,6 @@ class Article {
         db.query(query, [idinventory], callback);
     }
 
-    static getArticleById(id, callback) {
-        const query = 'SELECT * FROM Articles WHERE idarticle = ?';
-        db.query(query, [id], callback);
-    }
-
     static updateArticle(id, article, callback) {
         const query = 'UPDATE Articles SET name = ?, amount = ?, price = ?, idinventory = ? WHERE idarticle = ?';
         db.query(query, [article.name, article.amount, article.price, article.idinventory, id], callback);

@@ -72,16 +72,41 @@ exports.getUserById = (req, res) => {
 
 exports.updateUser = (req, res) => {
     const id = req.params.id;
-    const updatedUser = req.body;
-    User.updateUser(id, updatedUser, (err, result) => {
-        if (err) {
-            return res.status(500).json({ error: err.message });
-        }
-        if (result.affectedRows === 0) {
-            return res.status(404).json({ message: 'Usuario no encontrado' });
-        }
-        res.status(200).json({ message: 'Usuario actualizado con éxito' });
-    });
+    const { firstname, lastname, username, phone, password } = req.body;
+
+    if (!firstname || !lastname || !username) {
+        return res.status(400).json({ message: 'Todos los campos son requeridos' });
+    }
+
+    const updateFields = {
+        firstname,
+        lastname,
+        username,
+        phone
+    };
+
+    if (password) {
+        bcrypt.hash(password, 10, (err, hashedPassword) => {
+            if (err) return res.status(500).json({ message: 'Error al actualizar la contraseña' });
+            updateFields.pass = hashedPassword;
+
+            db.query('UPDATE users SET ? WHERE iduser = ?', [updateFields, id], (err, result) => {
+                if (err) return res.status(500).json({ message: 'Error al actualizar el usuario' });
+                if (result.affectedRows === 0) {
+                    return res.status(404).json({ message: 'Usuario no encontrado' });
+                }
+                res.status(200).json({ message: 'Usuario actualizado con éxito' });
+            });
+        });
+    } else {
+        db.query('UPDATE users SET ? WHERE iduser = ?', [updateFields, id], (err, result) => {
+            if (err) return res.status(500).json({ message: 'Error al actualizar el usuario' });
+            if (result.affectedRows === 0) {
+                return res.status(404).json({ message: 'Usuario no encontrado' });
+            }
+            res.status(200).json({ message: 'Usuario actualizado con éxito' });
+        });
+    }
 };
 
 exports.deleteUser = (req, res) => {
